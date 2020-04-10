@@ -23,8 +23,8 @@ public class PasswordGenerator {
         }
     }
 
-    private void generate() {
-        for (int i = 0; i < length; i++) {
+    private void generate(int n) {
+        for (int i = 0; i < n; i++) {
             int r = random.nextInt(size);
             //check for letter
             if (r < 26) {
@@ -39,8 +39,11 @@ public class PasswordGenerator {
 
     public PasswordGenerator() {
         random = new Random();
+
         for (int i = 0; i < 100; i++) {
-            generate();
+            // adds a bit of randomness to length (-2..2)
+            int n = random.nextInt(5) - 2;
+            generate(length + n);
         }
     }
 
